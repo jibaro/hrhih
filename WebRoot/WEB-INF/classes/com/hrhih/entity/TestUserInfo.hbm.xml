@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.hrhih.entity.TestUserInfo" table="testuser" catalog="hrhih"> 
+        <id name="uid" type="java.lang.Integer">
+            <column name="uid"></column>
+            <generator class="increment"></generator>
+        </id>
+        <property name="username" type="java.lang.String">
+            <column name="username" length="80"></column>
+        </property>
+        <property name="age" type="java.lang.Integer">
+            <column name="age" length="4"></column>
+        </property>
+        <property name="email" type="java.lang.String">
+            <column name="email" length="64"></column>
+        </property>
+    </class>
+</hibernate-mapping>
