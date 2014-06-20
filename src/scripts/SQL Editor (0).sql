@@ -7,3 +7,6 @@ CREATE TABLE `testuser` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
 select * from testuser;
+
+show tables;
+
