@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.hrhih.entity.MyResumer" table="myresumer" catalog="hrhih"> 
+        <id name="resumerid" type="java.lang.Integer">
+            <column name="resumerid"></column>
+            <generator class="increment"></generator>
+        </id>
+        
+        <property name="resumername" type="java.lang.String">
+            <column name="resumername" length="64" not-null="true"></column>
+        </property>
+        
+        <property name="langtype" type="java.lang.Integer">
+            <column name="langtype" default="0"></column>
+        </property>
+        
+        <property name="opentype" type="java.lang.Integer">
+            <column name="opentype" default="0"></column>
+        </property>
+        
+        <property name="createtime" type="java.lang.String">
+            <column name="createtime" length="16"></column>
+        </property>
+        
+        <property name="updatetime" type="java.lang.Integer">
+            <column name="updatetime" default="0"></column>
+        </property>
+        
+        <property name="modeltype" type="java.lang.Integer">
+            <column name="modeltype" default="1"></column>
+        </property>
+        
+        <property name="content" type="java.lang.String">
+            <column name="content" length="10000"></column>
+        </property>
+        
+        <property name="keywrods" type="java.lang.String">
+            <column name="keywrods" length="128"></column>
+        </property>
+        
+        <property name="srcfilename" type="java.lang.String">
+            <column name="srcfilename" length="64"></column>
+        </property>
+        
+        <property name="destfilename" type="java.lang.String">
+            <column name="destfilename" length="128"></column>
+        </property>
+        
+        <property name="salary" type="java.lang.Integer">
+            <column name="salary" default="0"></column>
+        </property>
+        
+        <property name="worklong" type="java.lang.Integer">
+            <column name="worklong" default="0"></column>
+        </property>
+        
+        <property name="expsalary" type="java.lang.Integer">
+            <column name="expsalary" default="0"></column>
+        </property>
+        
+        <property name="worktype" type="java.lang.Integer">
+            <column name="worktype" default="0"></column>
+        </property>
+        
+        <property name="workaddr" type="java.lang.String">
+            <column name="workaddr" length="128"></column>
+        </property>
+        
+        <property name="industry" type="java.lang.String">
+            <column name="industry" length="32"></column>
+        </property>
+        
+        <property name="job" type="java.lang.String">
+            <column name="job" length="64"></column>
+        </property>
+        
+        <property name="duty_date" type="java.lang.Integer">
+            <column name="duty_date" default="1"></column>
+        </property>
+        
+        <many-to-one name="jobhunter" class="com.hrhih.entity.Jobhunter" lazy="proxy" not-null="true">
+        	<column name="jhid"></column>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

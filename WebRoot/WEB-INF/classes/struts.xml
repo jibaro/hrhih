@@ -28,8 +28,8 @@
     <!-- 设置浏览器是否缓存静态内容(开发时设置为false,发布到生产环境后设置为true) -->
 	<constant name="struts.serve.static.browserCache" value="false" />
 
-	<!-- 文件上传最大值 -->
-	<constant name="struts.multipart.maxSize" value="104857600" />
+	<!-- 文件上传:大小 限制(默认2M,这里限制为2M=2*1024*1024) -->
+	<constant name="struts.multipart.maxSize" value="2097152" />
 
     <!-- 让struts2支持动态方法调用,使用叹号访问方法 -->
 	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
@@ -43,10 +43,16 @@
 	<!-- 对于WebLogic,Orion,OC4J此属性应该设置成true -->
 	<constant name="struts.dispatcher.parametersWorkaround" value="false" />
     
-     <!-- 默认的视图主题 -->
+    <!-- 默认的视图主题 -->
     <constant name="struts.ui.theme" value="simple" />
 	<constant name="struts.multipart.saveDir" value="/tmp"/> 
 	<constant name="struts.objectFactory.spring.autoWire.alwaysRespect" value="true" />
+
+	<!-- 1配置自定义文件类myRequestParser，继承MultiPartRequest重写 -->
+	<bean type="org.apache.struts2.dispatcher.multipart.MultiPartRequest"
+		name="HrhihRequestParser" class="com.hrhih.dispatcher.HrhihJakartaMultiPartRequest"
+		scope="default" optional="true" />
+	<constant name="struts.multipart.parser" value="HrhihRequestParser" />
 
     <include file="struts1.xml"/>
 	<package name="basePackage" extends="struts-default"></package>

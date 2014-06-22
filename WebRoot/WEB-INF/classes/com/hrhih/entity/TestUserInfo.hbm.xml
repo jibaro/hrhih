@@ -10,10 +10,10 @@
             <generator class="increment"></generator>
         </id>
         <property name="username" type="java.lang.String">
-            <column name="username" length="80"></column>
+            <column name="username" length="80" not-null="true"></column>
         </property>
         <property name="age" type="java.lang.Integer">
-            <column name="age" length="4"></column>
+            <column name="age" length="4" default="0"></column>
         </property>
         <property name="email" type="java.lang.String">
             <column name="email" length="64"></column>

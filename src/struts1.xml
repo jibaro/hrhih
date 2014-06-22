@@ -3,11 +3,19 @@
     "http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
 	<constant name="struts.objectFactory.spring.autoWire.alwaysRespect" value="true" />
+	
 	<package name="test" extends="struts-default">
 		<!-- 测试 -->
 		<action name="test1" class="testAction">
 			<result name="success">testsuc.jsp</result>
 			<result name="error">testerror.jsp</result>
 		</action>
+		
+		<action name="upload_*" class="uploadFile" method="{1}">
+            <result name="success">showResult2.jsp</result>
+            <result name="perfectAction" type="redirectAction">upload_clear.action</result>
+        </action>
+        
+        <action name="state_*" class="uploadState" method="{1}"></action>
 	</package>
 </struts>

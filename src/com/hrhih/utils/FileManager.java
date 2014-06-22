@@ -19,6 +19,12 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
+//import net.sf.jmimemagic.Magic;
+//import net.sf.jmimemagic.MagicException;
+//import net.sf.jmimemagic.MagicMatch;
+//import net.sf.jmimemagic.MagicMatchNotFoundException;
+//import net.sf.jmimemagic.MagicParseException;
+
 import org.slf4j.Logger;
 
 /**
@@ -416,6 +422,20 @@ public class FileManager {
 			copyFile(srcDir,dstDir);
 		}
 	}
+	
+//	public static String fileType(byte[] b){
+//		Magic parser = new Magic() ;  
+//		// getMagicMatch accepts Files or byte[],  
+//		// which is nice if you want to test streams  
+//		MagicMatch match = null;
+//		try {
+//			match = parser.getMagicMatch(b);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+////		System.out.println(match.getMimeType()) ;
+//		return match.getMimeType();
+//	}
        
     public static void sample(String path)
     {

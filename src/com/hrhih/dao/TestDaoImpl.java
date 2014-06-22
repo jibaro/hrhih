@@ -35,12 +35,8 @@ public class TestDaoImpl {
 	}
 
 	public int insertUser(TestUserInfo entity){
-		System.out.println("dao=========================");
 //		this.getHibernateTemplate().saveOrUpdate(entity);
 		this.getCurrentSession().save(entity);
 		return 0;
 	}
-	
-
-	
 }

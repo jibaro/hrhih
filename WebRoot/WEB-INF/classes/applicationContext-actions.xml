@@ -19,4 +19,10 @@
 		<property name="testbiz" ref="testservice"></property>
 	</bean>
 	
+	<bean id="uploadFile" class="com.hrhih.action.UploadAction" scope="prototype">
+		<property name="resumerbiz" ref="resumerbiz"></property>
+	</bean>
+	
+	<bean id="uploadState" class="com.hrhih.action.UploadStateAction" scope="prototype"></bean>
+	
 </beans>

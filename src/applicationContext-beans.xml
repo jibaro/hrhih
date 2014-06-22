@@ -24,4 +24,7 @@
 		<property name="testdao" ref="testdao"></property>
 	</bean>
 	
+	<bean id="resumerbiz" class="com.hrhih.biz.MyResumerBizImpl">
+	</bean>
+	
 </beans>

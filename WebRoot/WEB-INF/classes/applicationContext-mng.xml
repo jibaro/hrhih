@@ -84,6 +84,8 @@
 		<!-- 通过hbm.xml配置ORM -->
 		<property name="mappingResources">
 			<list>
+				<value>com/hrhih/entity/Jobhunter.hbm.xml</value>
+				<value>com/hrhih/entity/MyResumer.hbm.xml</value>
 				<value>com/hrhih/entity/TestUserInfo.hbm.xml</value>
 			</list>
 		</property>

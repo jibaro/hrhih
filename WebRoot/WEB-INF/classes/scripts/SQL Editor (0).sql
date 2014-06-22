@@ -8,5 +8,5 @@ CREATE TABLE `testuser` (
 
 select * from testuser;
 
-show tables;
+describe  testuser;
 

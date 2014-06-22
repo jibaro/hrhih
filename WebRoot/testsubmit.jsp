@@ -22,7 +22,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-   <form id="searchtopicgaoji" action="<%=basePath%>/test1.action">
+   <form id="searchtopicgaoji" action="<%=basePath%>test1.action">
     	<input name="username"/>
     	<input name="age"/>
     	<input name="email"/>

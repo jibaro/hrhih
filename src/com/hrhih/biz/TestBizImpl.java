@@ -22,13 +22,11 @@ public class TestBizImpl implements TestBiz{
 	}
 
 	public int insertData(String username,int age,String email){
-		System.out.println("biz=========================");
 		TestUserInfo entity=new TestUserInfo();
 		entity.setUsername(username);
 		entity.setAge(age);
 		entity.setEmail(email);
 		int retvalue=testdao.insertUser(entity);
-		System.out.println("biz=2========================");
 		return retvalue;
 	}
 }

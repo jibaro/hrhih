@@ -1,0 +1,104 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.hrhih.entity.Jobhunter" table="jobhunter" catalog="hrhih"> 
+        <id name="jhid" type="java.lang.Integer">
+            <column name="jhid"></column>
+            <generator class="increment"></generator>
+        </id>
+        
+        <property name="mobile" type="java.lang.String">
+            <column name="mobile" length="32" not-null="true"></column>
+        </property>
+        
+        <property name="username" type="java.lang.String">
+            <column name="username" length="64"></column>
+        </property>
+        
+        <property name="email" type="java.lang.String">
+            <column name="email" length="64"></column>
+        </property>
+        
+        <property name="passporttype" type="java.lang.Integer">
+            <column name="passporttype" default="0"></column>
+        </property>
+        
+         <property name="passport" type="java.lang.String">
+            <column name="passport" length="32"></column>
+        </property>
+        
+         <property name="passwd" type="java.lang.String">
+            <column name="passwd" length="16"></column>
+        </property>
+        
+         <property name="relatecounter" type="java.lang.String">
+            <column name="relatecounter" length="64"></column>
+        </property>
+        
+         <property name="regtype" type="java.lang.Integer">
+            <column name="regtype" default="0"></column>
+        </property>
+        
+         <property name="birthday" type="java.lang.String">
+            <column name="birthday" length="16"></column>
+        </property>
+        
+         <property name="photourl" type="java.lang.String">
+            <column name="photourl" length="256"></column>
+        </property>
+        
+         <property name="curraddr" type="java.lang.String">
+            <column name="curraddr" length="128"></column>
+        </property>
+        
+         <property name="currpost" type="java.lang.String">
+            <column name="currpost" length="12"></column>
+        </property>
+        
+         <property name="addr" type="java.lang.String">
+            <column name="addr" length="128"></column>
+        </property>
+        
+        <property name="degree" type="java.lang.Integer">
+            <column name="degree" default="0"></column>
+        </property>
+        
+         <property name="edudistrict" type="java.lang.String">
+            <column name="edudistrict" length="64"></column>
+        </property>
+        
+         <property name="edu" type="java.lang.String">
+            <column name="edu" length="64"></column>
+        </property>
+        
+         <property name="edudate" type="java.lang.String">
+            <column name="edudate" length="12"></column>
+        </property>
+        
+         <property name="sex" type="java.lang.Integer">
+            <column name="sex" default="2"></column>
+        </property>
+        
+        <property name="age" type="java.lang.Integer">
+            <column name="age" default="0"></column>
+        </property>
+        
+        <property name="marry" type="java.lang.Integer">
+            <column name="marry" default="2"></column>
+        </property>
+        
+        <property name="stature" type="java.lang.Integer">
+            <column name="stature" default="0"></column>
+        </property>
+        
+        <set name="resumers" lazy="true" inverse="true" cascade="all-delete-orphan">
+        	<key>
+        		<column name="jhid"></column>
+        	</key>
+        	<one-to-many class="com.hrhih.entity.MyResumer"/>
+        </set>
+    </class>
+</hibernate-mapping>

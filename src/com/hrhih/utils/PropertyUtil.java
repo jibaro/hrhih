@@ -462,18 +462,17 @@ public class PropertyUtil {
 	}
 
 	public static void main(String[] args) {
-		String path = "D:\\data\\test\\test.properties";
-
-		String v = PropertyUtil.getValue(path, "testkey");
+		String path = "/tools.properties";
+		String v = PropertyUtil.getValue(path, "OpenOffice_HOME");
 		System.out.println(v);
 		//
 		// _log.info("value0 = " + v);
 		// _log.debug("/com/vodone/search/config/test.properties");
 		//
-		Hashtable<String, String> ht = new Hashtable<String, String>();
-		ht.put("name", "yeshuqiang");
-		PropertyUtil.setValueAndStore(path, ht);
-		String v_ = PropertyUtil.getValue(path, "name");
+//		Hashtable<String, String> ht = new Hashtable<String, String>();
+//		ht.put("name", "yeshuqiang");
+//		PropertyUtil.setValueAndStore(path, ht);
+//		String v_ = PropertyUtil.getValue(path, "name");
 		// System.out.println(v_);
 		//
 		//
