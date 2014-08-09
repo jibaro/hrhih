@@ -5,12 +5,11 @@ import java.io.Serializable;
 /**
  * 我的简历
  * @author Yesq
- *
  */
 public class MyResumer implements Serializable {
 
 	private Integer resumerid;
-	private String resumername;//简历名称
+	private String resumername;//简历名称，如果modeltype为上传（=1），即文件名。
 	private int langtype;//简历类型，0=中文，1=英文
 	private int opentype;//公开程度，0=公开，1=对携手网公开，2=完全保密。
 	private String createtime;//简历创建时间 格式：2014-06-22。
@@ -21,7 +20,7 @@ public class MyResumer implements Serializable {
 	private String content;//简历内容，如果modeltype=1有效.modeltype=0,该值为空.
 	private String keywrods;//描述简历的关键字。最好跟自己的专业和职位相关，如行业、特长、业绩等
 	private String srcfilename;//上传的源文件名称。
-	private String destfilename;//上传的目标文件名称。
+	private String destfilename;//上传的目标文件名称。上传文件改名后的文件名。
 	private int salary;//当前年薪,RMB.
 	private int worklong;//从事该工作年限
 	

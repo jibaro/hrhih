@@ -141,6 +141,13 @@
   location="D:\jarbao\cpdetector_1.0.7\jargs.jar" model-entity="FileSystemJar"/>
  <file-system NAME="lib-jmimemagic-0.1.2.jar"
   location="D:\jarbao\jmimemagic-0.1.2.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-spring-core-3.2.9.RELEASE.jar"
+  location="D:\jarbao\mavenRepository\org\springframework\spring-core\3.2.9.RELEASE\spring-core-3.2.9.RELEASE.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-spring-context-3.2.9.RELEASE.jar"
+  location="D:\jarbao\mavenRepository\org\springframework\spring-context\3.2.9.RELEASE\spring-context-3.2.9.RELEASE.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="lib-spring-aop-3.2.9.RELEASE.jar"
+  location="D:\jarbao\mavenRepository\org\springframework\spring-aop\3.2.9.RELEASE\spring-aop-3.2.9.RELEASE.jar" model-entity="FileSystemJar"/>
+ <file-system NAME="hrhih" location="%eclipse.project%" model-entity="FileSystemFolder"/>
  <web SERVLET_VERSION="2.4" model-entity="JstWeb" model-path="/web.xml">
   <module URI="/WEB-INF/faces-config.xml" model-entity="WebJSFModule"
    model-path="/faces-config.xml" src="src" web-root="WEB-ROOT"/>

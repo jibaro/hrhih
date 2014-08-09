@@ -22,5 +22,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
     SUCCUCESS<br>
+    
+    testSuggest<br>
+       <form id="suggest" action="<%=basePath%>utils/index_suggest.action">
+    	<input name="term"/>
+    	<input type="submit" value="提交"/>
+    </form>
   </body>
 </html>

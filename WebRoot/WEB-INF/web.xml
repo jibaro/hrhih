@@ -14,6 +14,11 @@
 		<param-value>classpath:/applicationContext-*.xml</param-value>
 	</context-param>
 
+	<session-config>
+		<!-- session失效的时间 (分钟) -->
+		<session-timeout>15</session-timeout>
+	</session-config>
+
 	<!-- Struts2配置 -->
 	<filter>
 		<filter-name>struts2</filter-name>

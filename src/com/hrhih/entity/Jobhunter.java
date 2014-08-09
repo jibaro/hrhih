@@ -220,5 +220,11 @@ public class Jobhunter implements Serializable {
 	public void setRelatecounter(String relatecounter) {
 		this.relatecounter = relatecounter;
 	}
+
+	@Override
+	public String toString() {
+		return "Jobhunter [jhid=" + jhid + ", mobile=" + mobile + ", username="
+				+ username + ", email=" + email + "]";
+	}
 	
 }

@@ -13,6 +13,9 @@
     	则多个后缀之间以英文逗号（,）隔开。 -->
     <constant name="struts.action.extension" value="do,action"/>
     
+    <!-- namespace是否全匹配 true=是，false=模糊匹配-->
+    <constant name="struts.mapper.alwaysSelectFullNamespace" value="true"/>
+    
     <!-- 设置浏览器是否缓存静态内容,默认值为true(生产环境下使用),开发阶段最好关闭 -->
     <constant name="struts.serve.static.browserCache" value="false"/>
     
@@ -55,5 +58,4 @@
 	<constant name="struts.multipart.parser" value="HrhihRequestParser" />
 
     <include file="struts1.xml"/>
-	<package name="basePackage" extends="struts-default"></package>
 </struts>

@@ -4,7 +4,25 @@
 <struts>
 	<constant name="struts.objectFactory.spring.autoWire.alwaysRespect" value="true" />
 	
-	<package name="test" extends="struts-default">
+	<package name="hrhih" extends="struts-default">
+	
+	<!-- 定义一个拦截器 -->
+		<interceptors>
+			<interceptor name="authority" class="com.hrhih.interceptor.LoginInterceptor">
+			</interceptor>
+			<!-- 拦截器栈 -->
+			<interceptor-stack name="loginStack">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="authority" />
+			</interceptor-stack>
+		</interceptors>
+
+		<!-- 定义全局Result -->
+		<global-results>
+			<!-- 当返回login视图名时，转入login.jsp页面 -->
+			<result name="login">user/jhlogin.jsp</result>
+		</global-results>
+	
 		<!-- 测试 -->
 		<action name="test1" class="testAction">
 			<result name="success">testsuc.jsp</result>
@@ -14,8 +32,38 @@
 		<action name="upload_*" class="uploadFile" method="{1}">
             <result name="success">showResult2.jsp</result>
             <result name="perfectAction" type="redirectAction">upload_clear.action</result>
+            <!-- 使用此拦截器 -->
+            <interceptor-ref name="loginStack" />
         </action>
         
-        <action name="state_*" class="uploadState" method="{1}"></action>
+        <action name="state_*" class="uploadState" method="{1}">
+        	<!-- 使用此拦截器 -->
+        	<interceptor-ref name="loginStack" />
+        </action>
+        
+        <action name="login_*" class="loginAction" method="{1}">
+            <result name="success">FlashView.jsp</result>
+            <result name="login">user/jhlogin.jsp</result>
+            <result name="error">user/jhlogin.jsp</result>
+        </action>
+        
+        <action name="jobhunter*" class="jobhunterAction" method="{1}">
+            <result name="success">testsuc.jsp</result>
+        </action>
+        
+		<action name="imagecode" class="securityCodeAction">
+			<result name="success" type="stream">
+				<param name="contentType">image/jpeg</param>
+				<param name="inputName">imageStream</param>
+				<param name="bufferSize">2048</param>
+			</result>
+		</action>
+		
+	</package>
+	
+	<package name="utils_hrhih" namespace="/utils" extends="json-default">
+		<action name="index_*" class="suggestAction" method="{1}">
+            <result name="success" type="json"></result>
+        </action>
 	</package>
 </struts>

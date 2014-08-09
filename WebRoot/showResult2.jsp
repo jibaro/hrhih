@@ -27,7 +27,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <br/>
         <!--对Action中对象（fileUploadTools）包含的数组（uploadFileFileName）的遍历-->
         <s:iterator value="fileUploadTools.uploadFileFileName" status="st">
-            <s:iterator value="fileUploadTools.uploadFileFileName[#st.index]"> 
+            <s:iterator value="fileUploadTools.uploadFileFileName[#st.index]">
                 <s:property />
                 <br/>
             </s:iterator>

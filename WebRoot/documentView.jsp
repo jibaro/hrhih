@@ -3,7 +3,7 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 System.out.println("basePath==="+basePath);
-String swfFilePath=basePath+"SWFresumers/word2007.swf";
+String swfFilePath=basePath+"swfdocument/word2007.swf";
 
 System.out.println("swfFilePath==="+swfFilePath);
 
@@ -14,14 +14,17 @@ System.out.println("swfFilePath==="+swfFilePath);
 <base href="<%=basePath%>">
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script type="text/javascript" src="js/jquery.min.js"></script>
-		<script type="text/javascript" src="js/flexpaper.js"></script>
-		<script type="text/javascript" src="js/flexpaper_handlers.js"></script>
-<style type="text/css" media="screen"> 
+    <style type="text/css" media="screen"> 
 			html, body	{ height:100%; }
-			body { margin:0; padding:0; overflow:auto; }
+			body { margin:0; padding:0; overflow:auto; }   
 			#flashContent { display:none; }
-        </style> 
+    </style> 
+    
+    <link rel="stylesheet" type="text/css" href="css/flexpaper_flat.css" />
+    <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+	<script type="text/javascript" src="js/jquery.extensions.min.js"></script>
+	<script type="text/javascript" src="js/flexpaper.js"></script>
+	<script type="text/javascript" src="js/flexpaper_handlers.js"></script>
 
 <title>文档在线预览系统</title>
 </head>
@@ -30,6 +33,8 @@ System.out.println("swfFilePath==="+swfFilePath);
 <div id="documentViewer" class="flexpaper_viewer" style="width:770px;height:500px"></div>
 
 <script type="text/javascript">
+
+alert("==");
 
     $('#documentViewer').FlexPaperViewer(
             { config : {
@@ -56,7 +61,7 @@ System.out.println("swfFilePath==="+swfFilePath);
                 NavToolsVisible : true,
                 CursorToolsVisible : true,
                 SearchToolsVisible : true,
-                WMode : 'window',
+                
                 localeChain: 'zh_CN'
             }}
     );

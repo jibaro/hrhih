@@ -3,6 +3,11 @@ package com.hrhih.utils;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * 是否为乱码
+ * @author Yesq
+ *
+ */
 public class MessyCodeCheck {
 
 	public static boolean isChinese(char c) {

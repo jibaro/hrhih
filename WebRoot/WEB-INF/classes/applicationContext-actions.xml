@@ -25,4 +25,17 @@
 	
 	<bean id="uploadState" class="com.hrhih.action.UploadStateAction" scope="prototype"></bean>
 	
+	<bean id="loginAction" class="com.hrhih.action.LoginAction" scope="prototype">
+		<property name="userbiz" ref="userbiz"></property>
+	</bean>
+	
+	<bean id="jobhunterAction" class="com.hrhih.action.JobhunterAction" scope="prototype">
+		<property name="userbiz" ref="userbiz"></property>
+	</bean>
+	
+	<bean id="securityCodeAction" class="com.hrhih.action.SecurityCodeImageAction" scope="prototype"></bean>
+	
+	<bean id="suggestAction" class="com.hrhih.action.SuggestAction" scope="prototype">
+		<property name="autosuggest" ref="autoSuggester"></property>
+	</bean>
 </beans>

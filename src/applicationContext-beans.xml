@@ -24,7 +24,39 @@
 		<property name="testdao" ref="testdao"></property>
 	</bean>
 	
+	<!-- 简历索引库目录 -->
+	<bean id="resumeIndexDir" class="java.lang.String">
+		<constructor-arg>
+			<value>D:/MyTest/hrhih/lucene49</value>
+		</constructor-arg>
+	</bean>
+	
+	<!-- 简历索引库连接池，注入到简历索引和检索业务层-->
+	<bean id="indexPool" class="com.hrhih.index.pool.LuceneIndexPool">
+		 <constructor-arg name="indexDir" ref="resumeIndexDir" />
+         <constructor-arg name="initialSize" value="4" />
+         <constructor-arg name="incrementalNum" value="2"/>
+         <constructor-arg name="maxSize" value="10" />
+         <constructor-arg name="numThreads" value="2" />
+         <constructor-arg name="maxQueueSize" value="10" />
+	</bean>
+	
+	<!-- 动态提示数据存放目录 -->
+	<bean id="suggest_data_dir" class="java.lang.String">
+		<constructor-arg>
+			<value>D:/MyTest/hrhih/suggest</value>
+		</constructor-arg>
+	</bean>
+	
+	<!-- 自动提示处理类 -->
+	<bean id="autoSuggester" class="com.hrhih.index.suggest.LuceneAutoSuggester" init-method="init">
+		<property name="suggest_data_dir" ref="suggest_data_dir"></property>
+		<property name="suggest_max"><value>10</value></property>
+	</bean>
+	
 	<bean id="resumerbiz" class="com.hrhih.biz.MyResumerBizImpl">
 	</bean>
 	
+	<bean id="userbiz" class="com.hrhih.biz.UserServiceBizImpl">
+	</bean>
 </beans>

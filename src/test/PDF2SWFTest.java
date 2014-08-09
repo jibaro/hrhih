@@ -1,6 +1,6 @@
 package test;
 
-import com.hrhih.utils.PDF2SWF;
+import com.hrhih.tools.PDF2SWF;
 
 public class PDF2SWFTest {
 	public static void main(String[] args){

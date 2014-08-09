@@ -23,10 +23,11 @@ public interface MyResumerBiz {
 	/**
 	 * 插入 MyResumer
 	 * @param jh 求职者
-	 * @param file 上传的文件
+	 * @param file 上传并改变名称后的文件
+	 * @param srcfilename 原始文件名
 	 * @return
 	 */
-	public int insertMyResumer(Jobhunter jh ,File file);
+	public int insertMyResumer(Jobhunter jh ,File file,String srcfilename);
 	
 	/**
 	 * 更新MyResumer

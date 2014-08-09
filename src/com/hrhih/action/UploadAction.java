@@ -1,5 +1,6 @@
 package com.hrhih.action;
 
+import java.io.File;
 import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,10 +10,15 @@ import org.apache.struts2.ServletActionContext;
 
 import com.hrhih.action.entity.FileUploadTools;
 import com.hrhih.biz.MyResumerBiz;
+import com.hrhih.constant.Constants;
 import com.hrhih.entity.Jobhunter;
-import com.hrhih.entity.MyResumer;
 import com.opensymphony.xwork2.ActionSupport;
 
+/**
+ * 文件上传
+ * @author Yesq
+ *
+ */
 public class UploadAction extends ActionSupport {
     public static final long serialVersionUID = 1;
 
@@ -36,19 +42,16 @@ public class UploadAction extends ActionSupport {
     public String resume() throws IOException {
         fileUploadTools.beginUpload();
         
-//        HttpServletRequest request = ServletActionContext.getRequest();
-//        System.out.println("sess==>>"+request.getSession().getAttribute("uploadState"));
-//        State state = (State) request.getSession().getAttribute("uploadState");      
-//        System.out.println(state.getStateString());
-        
         //清空进度缓存数据
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();
-        session.removeAttribute("uploadState");
+        session.removeAttribute(Constants.UPLOAD_STATE);
         
-        Jobhunter jh=(Jobhunter)session.getAttribute("Jobhunter");
+        Jobhunter jh=(Jobhunter)session.getAttribute(Constants.JOBHUNTER);
         
-        resumerbiz.insertMyResumer(jh,fileUploadTools.getUploadFile()[0]);
+        File targetFile=fileUploadTools.getTargetFiles().get(0);
+        System.out.println("File=="+targetFile.getAbsolutePath());
+        resumerbiz.insertMyResumer(jh,targetFile,fileUploadTools.getUploadFileFileName()[0]);
         
         return SUCCESS;
     }

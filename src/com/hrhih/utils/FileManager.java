@@ -208,11 +208,25 @@ public class FileManager {
 	 * @return
 	 */
 	public static List<String> readersFile(File file,String encode){
-		FileInputStream fileStream =null;
+		FileInputStream fileStream;
+		try {
+			fileStream = new FileInputStream(file);
+			return readersFile(fileStream,encode);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}  
+		return null;
+	}
+	
+	/**
+	 * 对TXT文本文件读,读取多行。
+	 * @param file
+	 * @return
+	 */
+	public static List<String> readersFile(FileInputStream fileStream,String encode){
 		BufferedReader reader = null;
 		List<String> linelist=null;
 		try {
-			 fileStream = new FileInputStream(file);   
 			 InputStreamReader br = new InputStreamReader(fileStream,encode); 
 			 reader = new BufferedReader(br);
 			 String line="";
@@ -220,16 +234,6 @@ public class FileManager {
 			 while((line=reader.readLine())!=null){
 				 linelist.add(line);
 			 }
-//			 while((line=reader.readLine())!=null){
-////				 linelist.add(line);
-//				 if(!line.replaceAll("[\\s*|\t|\r|\n|　| ]+", "").trim().equals("")){
-////					 System.out.println("true");
-//					 line=line.replaceAll("[\\s*|\t|\r|\n|　| |\\w]", "");
-//					 if(line.length()<9&&line.length()>1){
-//						 linelist.add(line);
-//					 }
-//				 }
-//			 }
 		}catch(Exception e){
 			e.printStackTrace();
 		}finally{
@@ -452,9 +456,9 @@ public class FileManager {
 //    	File to=new File("D:\\testdir\\copyto");
 //    	FileManager.copyDirectory(from, to);
     	
-    	File from=new File("D:\\testdir\\testA.txt");
-    	File to=new File("D:\\testdir\\testA_bak.txt");
-    	FileManager.copyFile(from, to);
+//    	File from=new File("D:\\testdir\\testA.txt");
+//    	File to=new File("D:\\testdir\\testA_bak.txt");
+//    	FileManager.copyFile(from, to);
     	//System.out.println("copy success!");
     	//URL ftfile=SigeltonAnalyzer.class.getResource("/");
     	
@@ -468,7 +472,6 @@ public class FileManager {
         //String fileDir = "G:/temp/temp0/temp1";   
         //DeleteFileUtil.deleteDirectory(fileDir);   
         //IndexQuartzJob.delete(fileDir);   
-		
 		
     }   
 }

@@ -1,6 +1,6 @@
 package test;
 
-import com.hrhih.utils.Office2PDF;
+import com.hrhih.tools.Office2PDF;
 
 public class Office2PDFTest {
 	public static void main(String[] args){
