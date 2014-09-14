@@ -41,18 +41,32 @@
          <constructor-arg name="maxQueueSize" value="10" />
 	</bean>
 	
-	<!-- 动态提示数据存放目录 -->
+	<!-- 关键词（词频）动态提示数据存放目录 -->
 	<bean id="suggest_data_dir" class="java.lang.String">
 		<constructor-arg>
 			<value>D:/MyTest/hrhih/suggest</value>
 		</constructor-arg>
 	</bean>
 	
-	<!-- 自动提示处理类 -->
+	<!-- 关键词（词频）动态提示处理类 -->
 	<bean id="autoSuggester" class="com.hrhih.index.suggest.LuceneAutoSuggester" init-method="init">
 		<property name="suggest_data_dir" ref="suggest_data_dir"></property>
 		<property name="suggest_max"><value>10</value></property>
 	</bean>
+	
+	<!-- 国家与地区动态提示数据存放目录 -->
+	<bean id="region_suggest_data_dir" class="java.lang.String">
+		<constructor-arg>
+			<value>D:/MyTest/hrhih/suggest_region</value>
+		</constructor-arg>
+	</bean>
+	
+	<!-- 国家与地区动态提示处理类 -->
+	<bean id="regionSuggester" class="com.hrhih.index.suggest.LuceneAutoSuggester" init-method="init">
+		<property name="suggest_data_dir" ref="region_suggest_data_dir"></property>
+		<property name="suggest_max"><value>15</value></property>
+	</bean>
+	
 	
 	<bean id="resumerbiz" class="com.hrhih.biz.MyResumerBizImpl">
 	</bean>

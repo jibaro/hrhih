@@ -20,7 +20,7 @@ import com.hrhih.index.analyzer.SplitAnalyzer;
 
 /**
  * this is sinlgeTon class which contains suggestorMap.
- * @author ivy4127
+ * @author shuqiang
  */
 public class LuceneAutoSuggester implements AutoSuggester{
 	
@@ -74,7 +74,9 @@ public class LuceneAutoSuggester implements AutoSuggester{
 			if(files[i].isDirectory()){
 				prepareLookupMap(files[i]);
 			}else{
-				prepareLookupList(files[i]);
+				if(files[i].getName().toLowerCase().endsWith(".txt")){
+					prepareLookupList(files[i]);
+				}
 			}
 		}
 	}
@@ -91,7 +93,7 @@ public class LuceneAutoSuggester implements AutoSuggester{
 		String line=null;
 		try {
 			fileStream = new FileInputStream(f);
-			br = new InputStreamReader(fileStream,"GBK"); 
+			br = new InputStreamReader(fileStream,"UTF-8"); 
 			reader = new BufferedReader(br);
 			while((line=reader.readLine())!=null){
 				if(line.length()!=0){
@@ -124,10 +126,41 @@ public class LuceneAutoSuggester implements AutoSuggester{
 		 List<String> retList=new ArrayList<String>();
 		try {
 //			results = analyzingSuggester.lookup(query, false, 100);
-			List<LookupResult> results = analyzingSuggester.lookup(query,suggest_max, true, true);;
+			List<LookupResult> results = analyzingSuggester.lookup(query,suggest_max, true, false);
 			
 			for(LookupResult lr:results){
 				retList.add(lr.key.toString().split(String.valueOf(separator))[0].replaceAll("<b>|</b>", ""));
+			}
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return retList;
+	}
+	
+	public List<String> suggestRegion(String query,List<Long> regionvalues){
+		 List<String> retList=new ArrayList<String>();
+		try {
+//			results = analyzingSuggester.lookup(query, false, 100);
+			List<LookupResult> results = analyzingSuggester.lookup(query,suggest_max, true, false);
+			
+//			String teststr="[" +
+//								"[10,\"Baby Luigi\",null,\"Baby Luigi\"]," +
+//								"[59,\"Lex Luthor\",null,\"Lex Luthor\"]," +
+//								"[61,\"Lulu\",null,\"Lulu\"]" +
+//							"]";
+			for(LookupResult lr:results){
+				String[] retLineArr=lr.key.toString().split(String.valueOf(separator));
+				if(!regionvalues.contains(lr.value)){
+					StringBuffer rsb=new StringBuffer();
+					rsb.append("[");
+					rsb.append(lr.value).append(",")
+						.append("\"").append(retLineArr[0]).append("\"").append(",")
+						.append("null").append(",")
+						.append("\"").append(retLineArr[0]).append("\"");
+					rsb.append("]");
+					retList.add(rsb.toString());
+				}
 			}
 			
 		} catch (IOException e) {

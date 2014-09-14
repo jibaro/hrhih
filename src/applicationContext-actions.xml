@@ -37,5 +37,6 @@
 	
 	<bean id="suggestAction" class="com.hrhih.action.SuggestAction" scope="prototype">
 		<property name="autosuggest" ref="autoSuggester"></property>
+		<property name="regionsuggest" ref="regionSuggester"></property>
 	</bean>
 </beans>

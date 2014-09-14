@@ -4,9 +4,8 @@
 <struts>
 	<constant name="struts.objectFactory.spring.autoWire.alwaysRespect" value="true" />
 	
-	<package name="hrhih" extends="struts-default">
-	
-	<!-- 定义一个拦截器 -->
+	<package name="hrhih" extends="json-default">
+		<!-- 定义一个拦截器 -->
 		<interceptors>
 			<interceptor name="authority" class="com.hrhih.interceptor.LoginInterceptor">
 			</interceptor>
@@ -20,14 +19,17 @@
 		<!-- 定义全局Result -->
 		<global-results>
 			<!-- 当返回login视图名时，转入login.jsp页面 -->
-			<result name="login">user/jhlogin.jsp</result>
+			<!-- <result name="login">user/jhlogin.jsp</result> -->
+			<result name="login" type="redirect">/user/jhlogin.jsp</result>
+			<result name="404">/error/404.jsp</result>
+			<result name="500">/error/500.jsp</result>
+			<result name="505">/error/505.jsp</result>
 		</global-results>
-	
-		<!-- 测试 -->
-		<action name="test1" class="testAction">
-			<result name="success">testsuc.jsp</result>
-			<result name="error">testerror.jsp</result>
-		</action>
+		
+		<global-exception-mappings>
+			<!-- 出现异常时，将页面转到500这个错误页面 -->
+			<exception-mapping result="500" exception="java.lang.Exception"/>
+		</global-exception-mappings>
 		
 		<action name="upload_*" class="uploadFile" method="{1}">
             <result name="success">showResult2.jsp</result>
@@ -43,12 +45,12 @@
         
         <action name="login_*" class="loginAction" method="{1}">
             <result name="success">FlashView.jsp</result>
-            <result name="login">user/jhlogin.jsp</result>
-            <result name="error">user/jhlogin.jsp</result>
+            <result name="login">/user/jhlogin.jsp</result>
+            <result name="error">/user/jhlogin.jsp</result>
         </action>
         
         <action name="jobhunter*" class="jobhunterAction" method="{1}">
-            <result name="success">testsuc.jsp</result>
+            <result name="success">/testsuc.jsp</result>
         </action>
         
 		<action name="imagecode" class="securityCodeAction">
@@ -62,8 +64,33 @@
 	</package>
 	
 	<package name="utils_hrhih" namespace="/utils" extends="json-default">
-		<action name="index_*" class="suggestAction" method="{1}">
-            <result name="success" type="json"></result>
+		<!-- 定义一个拦截器 -->
+		<interceptors>
+			<interceptor name="authority" class="com.hrhih.interceptor.LoginInterceptor">
+			</interceptor>
+			<!-- 拦截器栈 -->
+			<interceptor-stack name="loginStack">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="authority" />
+			</interceptor-stack>
+		</interceptors>
+
+		<!-- 定义全局Result -->
+		<global-results>
+			<!-- 当返回login视图名时，转入login.jsp页面 -->
+			<!-- <result name="login">user/jhlogin.jsp</result> -->
+			<result name="login" type="redirect">/user/jhlogin.jsp</result>
+			<result name="404">/error/404.jsp</result>
+			<result name="500">/error/500.jsp</result>
+		</global-results>
+		
+		<global-exception-mappings>
+			<!-- 出现异常时，将页面转到500这个错误页面 -->
+			<exception-mapping result="500" exception="java.lang.Exception"/>
+		</global-exception-mappings>
+		
+		<action name="suggest4*" class="suggestAction" method="{1}">
+            <result name="success" type="json"><param name="root">suggests</param></result>
         </action>
 	</package>
 </struts>

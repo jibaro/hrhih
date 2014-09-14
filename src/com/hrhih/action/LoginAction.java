@@ -68,7 +68,11 @@ public class LoginAction extends ActionSupport {
 		//判断logintype的类型。如username,email,mobile,relatecounter
 		//如loginstr包含@，则logintype=“email”，以下假设logintype为email
 		String logintype="email";
-		Jobhunter jh=userbiz.login(loginstr, passwd, logintype);
+//		Jobhunter jh=userbiz.login(loginstr, passwd, logintype);
+		Jobhunter jh=new Jobhunter();
+		jh.setUsername(loginstr);
+		jh.setPasswd(passwd);
+		
 		
 		if (jh!=null) {
 			ActionContext.getContext().getSession().put(Constants.JOBHUNTER, jh);

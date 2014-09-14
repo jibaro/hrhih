@@ -8,10 +8,9 @@
   <description/>
   <dependencies>
     <dependency>
-      <groupId>org.apache.openejb</groupId>
-      <artifactId>javaee-api</artifactId>
-      <version>5.0-1</version>
-      <scope>provided</scope>
+      <groupId>javax.servlet</groupId>
+	  <artifactId>servlet-api</artifactId>
+      <version>2.5</version>
     </dependency>
     <dependency>
       <groupId>javax.faces</groupId>
@@ -210,6 +209,27 @@
 	    <version>4.9.0</version>
 	</dependency>
 	
+	<!-- JAVA Mail 邮件-->
+	<!-- 
+	<dependency>
+		<groupId>com.sun.mail</groupId>
+		<artifactId>javax.mail</artifactId>
+		<version>1.5.2</version>
+	</dependency>
+	-->
+	<dependency>
+		<groupId>javax.mail</groupId>
+		<artifactId>mail</artifactId>
+		<version>1.4.7</version>
+	</dependency>
+	 
+	 <!-- JAVA 对象属性验证-->
+	 <dependency>
+		<groupId>net.sf.oval</groupId>
+		<artifactId>oval</artifactId>
+		<version>1.84</version>
+	</dependency>
+	 
 	<dependency>
 	    <groupId>com.google.code.gson</groupId>
 	    <artifactId>gson</artifactId>

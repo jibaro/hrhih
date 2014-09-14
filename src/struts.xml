@@ -58,4 +58,5 @@
 	<constant name="struts.multipart.parser" value="HrhihRequestParser" />
 
     <include file="struts1.xml"/>
+    <include file="struts_test.xml"/>
 </struts>

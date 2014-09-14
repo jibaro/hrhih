@@ -1,12 +1,12 @@
-CREATE TABLE `testuser` (
-  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `username` varchar(80) NOT NULL DEFAULT '',
-  `age` int(4) NOT NULL,
-  `email` varchar(64) ,
-  PRIMARY KEY (`uid`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+select * from T_District order by id desc 
+select * from T_city where proid=35
+select * from T_Province
 
-select * from testuser;
 
-describe  testuser;
+alter table T_Province add seqnum int(8) not null default 0;
+
+
+UPDATE T_Province SET pingyin='beijinshi', szm='bjs',seqnum=2 where ProID=2;
+
+select seqnum from T_city order by seqnum desc;
 

@@ -38,11 +38,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 source:function(request,response){
                     $.ajax({
                         type:"POST",
-                        url:"<%=basePath%>utils/index_suggest.action",
+                        url:"<%=basePath%>utils/suggest4jobhunter.action",
                         dataType:"json",
                         data:{ suggest :  $("#suggestText").val() },
                         success:function(json){
-                            response($.map(json.suggests,function(item){
+                            response($.map(json,function(item){
                                 return {
                                     label:item,
                                     value:item

@@ -3,6 +3,9 @@
  */
 package com.hrhih.test;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import com.hrhih.biz.TestBiz;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -12,12 +15,23 @@ import com.opensymphony.xwork2.ActionSupport;
  */
 public class TestAction extends ActionSupport {
 	
+	// 返回结果给客户端
+	private Map<String, Object> dataMap;
+	
 	private String username;
 	private Integer age;
 	private String email;
 	
 	private TestBiz testbiz;
 	
+	public Map<String, Object> getDataMap() {
+		return dataMap;
+	}
+
+	public void setDataMap(Map<String, Object> dataMap) {
+		this.dataMap = dataMap;
+	}
+
 	/**
 	 * @return the username
 	 */
@@ -72,7 +86,6 @@ public class TestAction extends ActionSupport {
 		this.testbiz = testbiz;
 	}
 
-
 	@Override
 	public String execute() throws Exception {
 		
@@ -91,4 +104,24 @@ public class TestAction extends ActionSupport {
 		testbiz.insertData(username,age,email);
 		return SUCCESS;
 	}
+	
+	public String list() throws Exception {
+		
+		System.out.println("TestAction===list() exception test");
+		
+		int i = 10/0;
+	    return "list";
+	}
+	
+	public String jsonlist() {
+		
+		System.out.println("jsonlist>>>>>username=="+username+"  age=="+age+"   email=="+email);
+		dataMap = new HashMap<String, Object>();
+		dataMap.put("totalcount", 4);
+		dataMap.put("curpage", 1);
+		TestUser testuser = new TestUser(1,"zhangsan","111222");
+		dataMap.put("tuser", testuser);
+		return SUCCESS;
+	}
+	
 }

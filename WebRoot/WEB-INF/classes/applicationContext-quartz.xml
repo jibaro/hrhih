@@ -40,8 +40,10 @@
             <ref bean="writeResumerJobDetail" />
         </property>
         <property name="cronExpression">
-        	<!-- 每2秒执行一次 -->
+        	<!-- 每2秒执行一次 
             <value>0/2 * * * * ?</value>
+            -->
+            <value>0 * * * * ?</value>
         </property>
     </bean>
 
