@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- <oval xmlns="http://oval.sf.net/oval-configuration" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://oval.sf.net/oval-configuration http://oval.sourceforge.net/oval-configuration.xsd" 
+	> -->
+
+<oval>
+	<class type="test.validata.oval.XmlTrainData" overwrite="false"
+		applyFieldConstraintsToSetters="false">
+		<field name="sfzh">
+			<matchPattern message="身份证号不符合规则">
+				<pattern pattern="[0-9]{15}|[0-9]{17}[0-9X]" flags="0" />
+			</matchPattern>
+		</field>
+
+		<field name="xm">
+			<notNull message="姓名不能为空！"/>
+			<length min="5" max="24" message="姓名为 {min} 至 {max}个字符" />
+			<validateWithMethod methodName="isValid" parameterType="java.lang.String" message="姓名与学籍库不一致" />
+		</field>
+
+		<field name="qjStart">
+			<length min="2" message="区间起点不能少于{min}个字符" />
+		</field>
+
+		<field name="qjEnd" overwrite="true">
+			<length min="1" message="区间终点不能少于{min}个字符" />
+		</field>
+
+		<field name="rxrq">
+			<matchPattern message="入学日期为8位数字">
+				<pattern pattern="[0-9]{8}" />
+			</matchPattern>
+		</field>
+
+		<field name="yhcs">
+			<matchPattern message="优惠次数为一位或两位数字">
+				<pattern pattern="[0-9]{1,2}" flags="0" />
+			</matchPattern>
+		</field>
+
+		<field name="kxlh">
+			<validateWithMethod methodName="isValid_kxlh" parameterType="java.lang.String" message="卡序列号不能包含下划线！" />
+			<length min="1" message="卡序列号不能少于{min}个字符" />
+		</field>
+		
+		<field name="age">
+			<range min="18" message="年龄不能小于18岁！"/>
+		</field>
+		
+		<!-- define constructor parameter checks -->
+	    <constructor>
+	      <!-- parameter1 -->
+	      <parameter type="java.lang.String">
+	        <notNull />
+	      </parameter>
+	
+	      <!-- parameter 2 -->
+	      <!-- the types of all parameters must be listed, even if no checks are defined -->
+	      <parameter type="java.lang.String" />
+	      
+	      <!-- parameter  -->
+	      <parameter type="int">
+	      		<range min="18" message="年龄不能小于18岁！"/>
+	      </parameter>
+	    </constructor>
+		
+		<method name="setAge">
+	      <parameter type="int">
+	        	<notNull />
+	        	<range min="18" max="100" message="年龄范围在{min}和{max}之间！"/>
+	      </parameter>
+	    </method>
+	</class>
+</oval>

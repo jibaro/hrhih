@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant name="struts.objectFactory.spring.autoWire.alwaysRespect" value="true" />
+	
+	<package name="package1" namespace="/bigpipe" extends="struts-default">
+    	<action name="single" class="com.bigpipe.tag.TestAction" method="single">
+            <result>/test/bigPipeSingle.jsp</result>
+        </action>
+        <action name="multi" class="com.bigpipe.tag.TestAction" method="multi">
+            <result>/test/bigPipeMulti.jsp</result>
+        </action>
+    </package>
+	
+	<package name="testname" namespace="/mytest" extends="json-default">
+		<!-- 定义一个拦截器 -->
+		<interceptors>
+			<interceptor name="authority" class="com.hrhih.interceptor.LoginInterceptor">
+			</interceptor>
+			<!-- 拦截器栈 -->
+			<interceptor-stack name="loginStack">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="authority" />
+			</interceptor-stack>
+		</interceptors>
+
+		<!-- 定义全局Result -->
+		<global-results>
+			<!-- 当返回login视图名时，转入login.jsp页面 -->
+			<!-- <result name="login">user/jhlogin.jsp</result> -->
+			<result name="login" type="redirect">/user/jhlogin.jsp</result>
+			<result name="404">/error/404.jsp</result>
+			<result name="500">/error/500.jsp</result>
+			<result name="505">/error/505.jsp</result>
+		</global-results>
+		
+		<global-exception-mappings>
+			<!-- 出现异常时，将页面转到500这个错误页面 -->
+			<exception-mapping result="500" exception="java.lang.Exception"/>
+		</global-exception-mappings>
+		
+		<!-- 测试 -->
+		<action name="test1" class="testAction">
+			<result name="success">/test/testsuc.jsp</result>
+			<result name="error">/test/testerror.jsp</result>
+		</action>
+	</package>
+	
+	<package name="utilstest" namespace="/utils_test" extends="json-default">
+		<!-- 定义一个拦截器 -->
+		<interceptors>
+			<interceptor name="authority" class="com.hrhih.interceptor.LoginInterceptor">
+			</interceptor>
+			<!-- 拦截器栈 -->
+			<interceptor-stack name="loginStack">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="authority" />
+			</interceptor-stack>
+		</interceptors>
+
+		<!-- 定义全局Result -->
+		<global-results>
+			<!-- 当返回login视图名时，转入login.jsp页面 -->
+			<!-- <result name="login">user/jhlogin.jsp</result> -->
+			<result name="login" type="redirect">/user/jhlogin.jsp</result>
+			<result name="404">/error/404.jsp</result>
+			<result name="500">/error/500.jsp</result>
+		</global-results>
+		
+		<global-exception-mappings>
+			<!-- 出现异常时，将页面转到500这个错误页面 -->
+			<exception-mapping result="500" exception="java.lang.Exception"/>
+		</global-exception-mappings>
+		
+		<!-- 测试 -->
+		<action name="test_*" class="testAction" method="{1}">
+			<result name="list">/test/list.jsp</result>
+			<result name="error">/test/testerror.jsp</result>
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+	
+	</package>
+</struts>
